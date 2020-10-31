@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JoinME - Base</title>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Merriweather&display=swap" rel="stylesheet">
+    <style>
+    h1 {
+        font-family: 'Merriweather', serif;
+    }
+
+    ._logo {
+        font-size: 150%;
+        font-family: 'Carter One', cursive;
+    }
+
+    .pos-f-t {
+        float: right;
+    }
+
+    .nav_signup {
+        display: block;
+        white-space: pre-line;
+        padding-bottom: 10px;
+    }
+
+    .no_padding {
+        padding: 0;
+    }
+
+    .signup_border {
+        border-radius: 0px 0px 10px 10px;
+    }
+
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-dark bg-dark" style="background-color: #e3f2fd;">
+  <a class="navbar-brand _logo"><i class="fas fa-running"></i> JoinMe</a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search City?" aria-label="Search">
+    <a href="{% url 'activity_list' %}" class="btn btn-outline-info my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></a>
+  </form>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span> <i class="fas fa-user"></i>
+  </button>
+</nav>
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4 signup_border">
+        <a href="#" class="nav_signup btn btn-dark">Profiles settings</a>
+        <a href="{% url 'activity_create' %}" class="nav_signup btn btn-dark">Create an activity</a>
+        <a href="{% url 'user_login' %}" class="nav_signup btn btn-dark">Log out</a>
+        <a href="#" class="nav_signup no_padding btn btn-dark">Help</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+    <div class="mt-5">
+        <div class="jumbotron">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+</div>
+<!-- FOOTER -->
+<!-- <footer class="footer">
+  <div class="container">
+    <span class="text-muted">© 2019 Phong Le. All rights reserved.</span>
+  </div>
+</footer> -->
+
+<script crossorigin="anonymous"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

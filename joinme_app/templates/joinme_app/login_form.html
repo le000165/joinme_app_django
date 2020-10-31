@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JoinME</title>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Merriweather&display=swap" rel="stylesheet">
+    <style>
+    h1 {
+        font-family: 'Merriweather', serif;
+    }
+
+    ._logo {
+        font-size: 150%;
+        font-family: 'Carter One', cursive;
+    }
+
+    .pos-f-t {
+        float: right;
+    }
+
+    .nav_signup {
+        display: block;
+        white-space: pre-line;
+        padding-bottom: 10px;
+    }
+
+    .no_padding {
+        padding: 0;
+    }
+
+    .signup_border {
+        border-radius: 0px 0px 10px 10px;
+    }
+
+    .login_box {
+        background-color: white;
+        border-radius: 10px 10px;
+        padding-top: 10px;
+    }
+
+    .login_form input {
+        font-size: 130%;
+    }
+
+    .center_text {
+        text-align: center;
+    }
+
+    body {
+        background-color: f1f6f9;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="mt-5">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-8">
+                    <h3 class="display-4"><p class="_logo"><i class="fas fa-running"></i> JoinMe</p></h3>
+                    <p class="lead font-italic">JoinME Project, Author: Phong ...</p>
+                    <p class="lead font-italic">Looking for a place to join activities near you</p>
+                    <p class="lead font-italic">Sign up to join activities with your neigborhood</p>
+                    <p class="lead font-italic">Host an activity with your community</p>
+
+                </div>
+                <div class="login_form col-4 login_box ">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <p style="color:#DC143C">{{ message }}</p>
+                        {{ form.u_email }}
+                        {{ form.pswd }}
+                        <button type="submit" class="btn btn-primary btn-block mb-3 btn-lg">Login</button>
+                        <div class="center_text">
+                            <a href="#" class="">Forgot Password?</a>
+                        </div>
+                        <hr class="my-4">
+                        <div class="center_text">
+                            <a href="{% url 'signup_user' %}" type="button" class="btn btn-success mb-3">Create A New Account</a>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script crossorigin="anonymous"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

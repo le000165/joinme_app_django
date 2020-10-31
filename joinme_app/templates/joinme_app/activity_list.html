@@ -1,0 +1,37 @@
+{% extends "joinme_app/base.html" %}
+
+{% block content %}
+<table class="table table-border-less">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Activity</td>
+            <td>Address</td>
+            <td>Start</td>
+            <td>End</td>
+            <td>People</td>
+            <td>Fees</td>
+            <td>Organizer</td>
+            <td>
+                <a href="{% url 'activity_create' %}" class="btn btn-outline-success"><i class="fa fa-plus"></i> Add Activity</a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for activity in activity_list %}
+        <tr>
+            <td>{{activity.activity_name}}</td>
+            <td>{{activity.address}}</td>
+            <td>{{activity.start}}</td>
+            <td>{{activity.end}}</td>
+            <td>{{activity.num_people}}</td>
+            <td>${{activity.fees}}</td>
+            <td>{{activity.organizer}}</td>
+            <td>
+                <a href="{% url 'activity_details' activity.id %}" class="btn btn-primary"><i class="fas fa-file-signature"></i> Details</a>
+                <button type="button" class="btn btn-outline-danger"><i class="far fa-heart"></i></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

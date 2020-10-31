@@ -1,0 +1,75 @@
+{% extends "joinme_app/base_details.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="display-4">{{activity.activity_name}}</h1>
+<p class="lead font-italic">by <b>{{activity.organizer}}</b> at {{activity.date}}</p>
+<hr class="my-4">
+<div class="row">
+    <div class="col">
+        <h5><i class="fas fa-search-location"></i> Location</h5>
+        <p>{{activity.city}}, {{activity.address}}, {{activity.zip}}</p>
+        <h5><i class="far fa-clock"></i> Dates and Time</h5>
+        <p>Starting at {{activity.start}} to {{activity.end}} at {{activity.date}}</p>
+        <h5><i class="far fa-money-bill-alt"></i> Fees</h5>
+        <p>${{activity.fees}}</p>
+        <h5><i class="fas fa-walking"></i> People Registered</h5>
+        <p>{{activity.num_people}} peoples</p>
+        <h5><i class="far fa-id-card"></i> Organizer Contact</h5>
+        {{activity.organizer}}
+        <p>{{activity.email}}</p>
+    </div>
+    <div class="col">
+        <h5><i class="far fa-file-alt"></i> Description</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <hr class="my-4">
+
+        <!-- Maps Embed API for the current activity location -->
+        <iframe
+        width="600"
+        height="450"
+        frameborder="0" style="border:0"
+        src="{{ api_address }}" allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<hr class="my-4">
+
+<!-- Comments Form -->
+<div class="row">
+    <div class="col">
+        <!-- Single Comment -->
+               {% for comment in comments %}
+               <div class="media mb-4">
+                 <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                 <div class="media-body">
+                   <h5 class="mt-0">{{ activity.organizer }}</h5>
+                   <em>{{ comment.created }}</em>
+                   <p>{{ comment.body }}</p>
+                 </div>
+               </div>
+             {% endfor %}
+             <div class="card my-4">
+               <h5 id="last_comment" class="card-header">Leave a Comment:</h5>
+               <div class="card-body">
+                 <form action="#last_comment" method="post" autocomplete="off">
+                 {% csrf_token %}
+                   <div class="form-group">
+                       {{ comment_form.body }}
+                   </div>
+                   <button type="submit" class="btn btn-primary" name="submit_cmt">Submit</button>
+                 </form>
+               </div>
+             </div>
+    </div>
+    <div class="col">
+        <a href="{% url 'activity_list' %}" type="reset" class="btn btn-danger btn-lg btn-block">Register</a>
+        <a href="{% url 'activity_list' %}" type="reset" class="btn btn-info btn-lg btn-block">More Activities</a>
+    </div>
+</div>
+
+
+{% endblock content %}

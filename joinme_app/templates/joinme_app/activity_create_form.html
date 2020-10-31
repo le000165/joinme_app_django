@@ -1,0 +1,63 @@
+{% extends "joinme_app/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form action="" method="post" autocomplete="off" >
+    {% csrf_token %}
+
+    {{ form.activity_name|as_crispy_field }}
+    <div class="row">
+        <div class="col">
+            {{ form.address|as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.province|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ form.city|as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.zip|as_crispy_field }}
+        </div>
+    </div>
+    {{ form.fees|as_crispy_field }}
+    <div class="row">
+        <div class="col">
+            {{ form.date|as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.start|as_crispy_field }}
+        </div>
+        <div class="col">
+                {{ form.end|as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.num_people|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ form.organizer|as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.email|as_crispy_field }}
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Submit</button>
+    <a href="{% url 'activity_list' %}" class="btn btn-secondary"><i class="fas fa-ban"></i> Cancel</a>
+</form>
+{% endblock content %}
+
+
+<!-- activity_name = models.CharField(max_length=20)
+city = models.CharField(max_length=20)
+address = models.CharField(max_length=20)
+fees = models.CharField(max_length=20)
+organizer = models.CharField(max_length=20)
+start = models.CharField(max_length=20)
+end = models.CharField(max_length=20)
+date = models.CharField(max_length=20)
+num_people = models.IntegerField(default=0, blank=False, null=False) -->
